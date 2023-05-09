@@ -140,5 +140,8 @@ example.domain.com {
 cd ~/node_monitoring
 docker-compose down
 docker volume prune -f
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker rmi $(docker images -q)
 ```
 
