@@ -1,0 +1,57 @@
+global:
+  scrape_interval: 15s 
+  evaluation_interval: 15s
+
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets: ['alert_manager:9093']
+
+rule_files:
+  - alerts_for_node.yml
+  - alerts_for_server.yml
+
+
+scrape_configs:
+
+  - job_name: "grafana-server"
+    static_configs:
+    - targets: ["node-exporter:9100"]
+      labels:
+        instance: "grafana-server"
+
+  ##############################
+  ##     just remove '#'      ##
+  ##  and replace on your ip  ##
+  ##############################
+
+  ## for monitoring your servers
+  #- job_name: "your_servers"
+  #  static_configs:
+  #  - targets: ["127.0.0.1:9100"]
+  #    labels:
+  #      instance: "server1"
+  #  - targets: ["127.0.0.2:9100"]
+  #    labels:
+  #      instance: "server2"
+
+
+  #################################
+  ##       just remove '#'       ##
+  ##    and replace on your ip   ##
+  ## and on your prometheus port ##
+  #################################
+
+  ## for cosmos-based validator node with node_exporter installed and prometheus enabled
+  #- job_name: "cosmos-validator"
+  #  static_configs:
+  #  - targets: ["127.0.0.1:9100","127.0.0.1:26660"]
+  #    labels:
+  #      instance: "node1"
+  #  - targets: ["127.0.0.1:9100","127.0.0.1:27660"]
+  #    labels:
+  #      instance: "node2"
+  #  - targets: ["127.0.0.1:9100","127.0.0.1:28660"]
+  #    labels:
+  #      instance: "node3"
