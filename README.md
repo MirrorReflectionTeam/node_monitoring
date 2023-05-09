@@ -1,8 +1,5 @@
 # monitoring-tool
 
-> A powerful and easy-to-use monitoring tool for server hardware and validator nodes with alerts via telegram bot and grafana dashboards
-
-
 ### You need:
 - Server with node
 - Server for monitoring tool: Ubuntu 20.04 / 1 VCPU / 2 GB RAM / 20 GB SSD
@@ -12,8 +9,9 @@ Just run next command
 ```
 bash <(curl https://raw.githubusercontent.com/MirrorReflectionTeam/node_monitoring/main/utils/install_exporter.sh)
 ```
-##### Open ports if you use firewall
+
 Make sure prometheus is enabled in validator **config.toml** file
+##### Open ports if you use firewall
 ```
 ufw allow 9100
 ufw allow <prometheus_port_node>
@@ -33,8 +31,8 @@ git clone https://github.com/MirrorReflectionTeam/node_monitoring.git
 cd node_monitoring 
 ```
 
-### Configuration
-#### Server for monitoring
+### Configuration:
+#### Server for monitoring:
 Add your servers with installed [node_exporter](https://github.com/prometheus/node_exporter) or installed cosmos-based node with enabled prometheus port to file <b>prometheus/prometheus.yml</b>
 ```
   ##############################
@@ -73,7 +71,7 @@ Add your servers with installed [node_exporter](https://github.com/prometheus/no
   #      instance: "node3"
 ```
 
-### Alerts
+### Alerts:
 #### Server alerts
 - Server down
 - Out of memory (<10%)
@@ -89,11 +87,16 @@ Add your servers with installed [node_exporter](https://github.com/prometheus/no
 - Node Disk Full
 
 
-#### Telegram notification
+#### Telegram notification:
+| KEYS	| VALUES |
+| :------: | :-----:
+| TELEGRAM_ADMIN |	Your **chat id** you can get from [this](@userinfobot) |
+|TELEGRAM_TOKEN	| Your telegram **bot token** you can get from [this](@botfather)|
+
 In order to enable telegram notifications, create your own bot and fill in the following fields in the file <b>alertmanager/config.yml</b>
 ```
-chat_id=1111111                 # your telegram user id
-bot_token=11111111:AAG_XXXXXXX  # your telegram bot token
+chat_id=1111111                 
+bot_token=11111111:AAG_XXXXXXX  
 ```
 
 
