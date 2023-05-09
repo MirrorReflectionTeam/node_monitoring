@@ -135,3 +135,10 @@ example.domain.com {
 }
 ```
 
+## Cleanup all container data
+```
+cd ~/node_monitoring
+docker-compose down
+docker volume prune -f
+```
+
